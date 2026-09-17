@@ -1,0 +1,9 @@
+__pycache__/
+*.pyc
+.venv/
+.env
+
+# Series diarias del SIAM: las descarga src/descargar_siam.py
+diario_*.csv
+src/diario_*.csv
+src/estaciones.csv

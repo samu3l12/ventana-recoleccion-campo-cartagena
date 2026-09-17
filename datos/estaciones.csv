@@ -1,0 +1,51 @@
+"CODEST","RED","PARAJE","MUNICIPIO","FECHA DE ALTA","LATITUD","LONGITUD","ALTITUD"
+"AL31","SIAR","Lebor","Totana",01/09/99,"37.73249722","-1.51313611",236
+"AL41","SIAM","La Calavera","Alhama",01/01/96,"37.79223611","-1.416775",169
+"AL51","SIAR","La Egesa","Librilla",23/07/99,"37.89941944","-1.33833611",164
+"AL52","SIAR","Los Palomos","Librilla",28/03/18,"37.89045556","-1.30955833",125
+"AL62","SIAM","Cañada Gallego","Mazarrón",01/01/96,"37.56222222","-1.40097222",94
+"AL91","SIAM","Leiva","Mazarrón",07/11/14,"37.61444444","-1.37888889",112
+"CA12","SIAM","La Palma","Cartagena",25/06/05,"37.68886667","-0.95085833",30
+"CA21","SIAR","Corvera","Murcia",01/09/99,"37.8314","-1.12291389",227
+"CA42","SIAR","Balsapintada","Fuente Alamo",01/09/99,"37.74830278","-1.12920556",138
+"CA52","SIAR","La Aljorra","Cartagena",01/09/99,"37.67701389","-1.07060556",84
+"CA73","SIAM","Los Belones","Cartagena",29/11/16,"37.61115","-0.80379167",92
+"CA91","SIAM","Campillo Abajo","Fuente Alamo",01/01/96,"37.69903333","-1.23804444",175
+"CI22","SIAM","Estación de Blanca","Blanca",01/01/96,"38.23539722","-1.30988056",282
+"CI32","SIAR","Estación Ulea","Ulea",01/09/99,"38.19137778","-1.257925",236
+"CI42","SIAM","La Carrichosa","Cieza",01/01/96,"38.28388889","-1.49634444",244
+"CI52","SIAM","Rotas","Calasparra",01/01/96,"38.25349722","-1.69496944",275
+"CI71","SIAM","Llano de las olivericas","Calasparra",16/12/15,"38.2695","-1.585",282
+"CR12","SIAM","Barranda","Caravaca",29/10/98,"38.04395556","-1.98018611",869
+"CR32","SIAM","El Chaparral","Cehegin",01/01/96,"38.11093056","-1.68307222",433
+"CR42","SIAR","Venta Ulea","Moratalla",23/07/99,"38.19843056","-1.81041667",456
+"CR52","SIAM","La Torrecica","Cehegin",01/01/96,"38.10451667","-1.78005",507
+"CR61","SIAM","Casas del Rey","Moratalla",14/03/06,"38.11452778","-2.096225",1232
+"JU12","SIAM","Cª del Judio","Jumilla",01/05/97,"38.04395556","-1.98018611",395
+"JU42","SIAR","Las Moratillas","Yecla",27/09/00,"38.65886111","-1.18575833",658
+"JU52","SIAM","Pinillos","Yecla",01/02/96,"38.56265833","-1.11238056",567
+"JU71","SIAM","Las Encebras","Jumilla",01/01/96,"38.39444722","-1.23932778",401
+"JU81","SIAM","Roman","Jumilla",12/11/98,"38.31980556","-1.32432778",341
+"LO11","SIAR","Purias","Lorca",01/09/99,"37.60173056","-1.31664444",324
+"LO21","SIAR","Pozohiguera","Lorca",26/09/00,"37.50385","-1.69390833",356
+"LO31","SIAR","La Pilica","Aguilas",21/09/99,"37.4186","-1.59220556",31
+"LO41","SIAR","La Paca","Lorca",01/09/99,"37.8552","-1.81850556",693
+"LO51","SIAM","Tebar","Aguilas",01/01/96,"37.48790278","-1.62396944",329
+"LO61","SIAM","El Esparragal","Puerto Lumbreras",01/01/96,"37.59047222","-1.72555556",319
+"ML12","SIAM","Yechar","Mula",15/04/98,"38.06587222","-1.4295",264
+"ML21","SIAM","Mula","Mula",09/07/98,"38.04104444","-1.46680278",276
+"MO12","SIAR","Pilica","Torres de Cotillas",27/09/99,"38.00703056","-1.30256389",161
+"MO22","SIAM","Campotejar","Molina Segura",01/01/96,"38.12751111","-1.22065556",146
+"MO31","SIAM","El Llano","Molina Segura",01/05/97,"38.07113889","-1.23368056",80
+"MO41","SIAM","La Jaira","Abanilla",03/01/99,"38.17000556","-1.06548611",162
+"MO51","SIAR","Charco Taray","Fortuna",21/07/99,"38.16105278","-1.15261944",197
+"MO62","SIAM","Loma del Aire","Ojós",14/05/15,"38.11331667","-1.33942778",206
+"MU21","SIAR","Los Alamos","Beniel",27/09/00,"38.03453611","-0.99964444",27
+"MU31","SIAM","La Vereda","Murcia",18/07/98,"37.89821944","-1.26826389",140
+"MU52","SIAM","Cabezo Plata","Murcia",18/02/96,"37.97754167","-0.983525",125
+"MU62","SIAM","La Alberca","Murcia",01/03/98,"37.94006667","-1.13471944",56
+"TP22","SIAM","Santiago de la Ribera","San Javier",01/10/97,"37.79169444","-0.81957778",7
+"TP42","SIAM","Torre Blanca","Torre Pacheco",01/03/97,"37.77385833","-0.89850556",31
+"TP52","SIAM","El Mirador","San Javier",19/03/09,"37.84811944","-0.88354167",91
+"TP73","SIAM","Los Infiernos","Torre Pacheco",10/07/97,"37.82389444","-0.93148056",92
+"TP91","SIAM","Torre Pacheco","Torre Pacheco",08/07/05,"37.747725","-0.98667222",56
