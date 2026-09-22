@@ -10,9 +10,9 @@ Muchas comercializadoras planifican con un calendario fijo: si trasplantas la se
 
 Usé las series diarias de temperatura de 5 estaciones de la red SIAM del IMIDA, de 2000 a 2018 (19 campañas). Para cada semana de trasplante sumo los grados-día, `max(0, (tmax + tmin) / 2 - T_base)`, hasta llegar a lo que necesita el cultivo, y cuento cuántos días han hecho falta.
 
-Brócoli, con temperatura base de 4,4 °C y 850 grados-día:
+Brócoli, con temperatura base de 4,4 °C y 850 grados-día, juntando las 5 estaciones:
 
-| Semana de trasplante | Días de media | Año más rápido | Año más lento | Diferencia |
+| Semana de trasplante | Días de media | Caso más rápido | Caso más lento | Diferencia |
 |---|---|---|---|---|
 | 35 (finales de agosto) | 47 | 40 | 56 | 16 días |
 | 38 | 58 | 48 | 77 | 29 días |
@@ -20,7 +20,7 @@ Brócoli, con temperatura base de 4,4 °C y 850 grados-día:
 | 44 (principios de noviembre) | 108 | 83 | 148 | 65 días |
 | 47 | 116 | 95 | 142 | 47 días |
 
-Trasplantado la misma semana, el mismo brócoli habría estado listo a los 83 días un año y a los 148 otro. Con la lechuga pasa lo mismo: hasta 52 días de diferencia en la semana 47.
+Ojo con cómo se lee: esa tabla junta estaciones distintas. En la semana 44, el caso más rápido (83 días) es de Los Infiernos en 2006 y el más lento (148) de Torre Blanca en 2004, así que la diferencia de 65 días mezcla el año con la zona. Si miro cada estación por separado, solo por el año la diferencia va de 37 a 49 días. Sigue siendo mucho para planificar con calendario. Con la lechuga pasa algo parecido: hasta 52 días de diferencia en la semana 47, juntando estaciones.
 
 En los trasplantes de finales de verano el calendario aguanta bastante bien. A partir de octubre ya no, y es justo la parte de la campaña que va al mercado europeo de invierno.
 
