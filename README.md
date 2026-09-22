@@ -1,74 +1,71 @@
 # Ventana de recolección en el Campo de Cartagena
 
-Cuánto se mueve la fecha de corte del brócoli y de la lechuga entre campañas, y cómo detectar ese corte desde satélite.
+Quería saber cuánto se mueve la fecha de corte del brócoli y de la lechuga de un año a otro en el Campo de Cartagena, y si se puede ver ese corte desde satélite. Esto es lo que he sacado hasta ahora con datos públicos. Todavía no es un modelo de predicción.
 
-Investigación abierta y en curso. Aquí está lo que ya se puede medir con datos públicos, con sus límites por delante.
+## De dónde sale la pregunta
 
-## La pregunta
+Muchas comercializadoras planifican con un calendario fijo: si trasplantas la semana 44, recolectas a los 108 días. Pero el cultivo no mira el calendario, mira el calor que acumula. Así que quise medir cuánto se separa la realidad del calendario según el año.
 
-Una comercializadora de hortícola de invierno planifica con un calendario fijo: «trasplanto la semana 44, recolecto a los 108 días». El clima no sigue ese calendario. La pregunta es cuánto se desvía la realidad térmica de la planificación, y si esa desviación es lo bastante grande como para que merezca la pena predecirla.
+## El calendario falla en los trasplantes de otoño
 
-## Resultado 1: el calendario fijo falla en los trasplantes de otoño
+Usé las series diarias de temperatura de 5 estaciones de la red SIAM del IMIDA, de 2000 a 2018 (19 campañas). Para cada semana de trasplante sumo los grados-día, `max(0, (tmax + tmin) / 2 - T_base)`, hasta llegar a lo que necesita el cultivo, y cuento cuántos días han hecho falta.
 
-Integral térmica (grados-día de crecimiento) sobre **19 campañas (2000-2018)** de **5 estaciones agroclimáticas** de la red SIAM del IMIDA, descargadas del portal de datos abiertos de la CARM.
+Brócoli, con temperatura base de 4,4 °C y 850 grados-día:
 
-Para cada semana de trasplante se acumula `max(0, (tmax + tmin) / 2 - T_base)` hasta alcanzar el requerimiento del cultivo, y se cuenta cuántos días han hecho falta.
-
-Brócoli (T_base 4,4 °C, 850 GDD):
-
-| Semana de trasplante | Ciclo medio | Mínimo | Máximo | Diferencia |
+| Semana de trasplante | Días de media | Año más rápido | Año más lento | Diferencia |
 |---|---|---|---|---|
-| 35 (finales de agosto) | 47 días | 40 | 56 | **16 días** |
-| 38 | 58 días | 48 | 77 | 29 días |
-| 41 | 83 días | 61 | 119 | 58 días |
-| 44 (principios de noviembre) | 108 días | 83 | 148 | **65 días** |
-| 47 | 116 días | 95 | 142 | 47 días |
+| 35 (finales de agosto) | 47 | 40 | 56 | 16 días |
+| 38 | 58 | 48 | 77 | 29 días |
+| 41 | 83 | 61 | 119 | 58 días |
+| 44 (principios de noviembre) | 108 | 83 | 148 | 65 días |
+| 47 | 116 | 95 | 142 | 47 días |
 
-El mismo cultivo, trasplantado la misma semana, tardó **83 días un año y 148 otro**. En lechuga el patrón se repite, con hasta 52 días de diferencia en la semana 47.
+Trasplantado la misma semana, el mismo brócoli habría estado listo a los 83 días un año y a los 148 otro. Con la lechuga pasa lo mismo: hasta 52 días de diferencia en la semana 47.
 
-La lectura: en los trasplantes de finales de verano un calendario fijo funciona razonablemente bien; a partir de octubre deja de funcionar. Y ese es justo el tramo de campaña que abastece el invierno europeo.
+En los trasplantes de finales de verano el calendario aguanta bastante bien. A partir de octubre ya no, y es justo la parte de la campaña que va al mercado europeo de invierno.
 
-## Resultado 2: el corte se ve desde satélite, salvo cuando hay nubes
+## Desde satélite se ve el corte, cuando no hay nubes
 
-![Serie de verdor de tres parcelas del Campo de Cartagena](figuras/curva_ndvi_campo_cartagena.png)
+![Verdor de tres parcelas del Campo de Cartagena](figuras/curva_ndvi_campo_cartagena.png)
 
-Series de NDVI de **Sentinel-2 L2A**, obtenidas del catálogo STAC público de Element84 sobre AWS, sin credenciales ni coste. Ventana de 150 m por parcela y píxeles con nube descartados con la banda SCL.
+Saqué el verdor (NDVI) de Sentinel-2 para tres parcelas, del catálogo STAC público de Element84 en AWS, que no pide cuenta ni cuesta nada. Para cada parcela uso un cuadrado de 150 m y quito los píxeles con nubes usando la banda SCL.
 
-El verdor sube mientras el cultivo crece y se desploma el día que se recolecta. En la parcela de La Palma, la caída va de **0,77 a 0,17** (el máximo de la campaña fue 0,81), y es inconfundible.
+Mientras el cultivo crece el verdor sube, y cuando se corta baja de golpe. En la parcela de La Palma bajó de 0,77 a 0,17 (el máximo de la campaña fue 0,81).
 
-El problema está en el mismo dato: entre el **21 de diciembre y el 25 de enero no hubo ni una sola imagen útil** por nubosidad. Se sabe que la parcela se cortó, pero solo dentro de una ventana de **35 días**. Para validar una predicción a 5 días vista, eso no vale.
+El problema es que entre el 21 de diciembre y el 25 de enero no hay ninguna imagen útil por las nubes. Sé que la parcela se cortó en ese tiempo, pero no qué semana: hay 35 días de margen. Para comprobar una predicción a 5 días vista eso no me sirve.
 
-![Cómo se calcula el NDVI](figuras/como_se_calcula_ndvi.png)
+![Foto en color y mapa de verdor antes y después del corte](figuras/como_se_calcula_ndvi.png)
 
-## Lo que esto todavía no resuelve
+## Cosas que me encontré por el camino
 
-1. **Huecos por nubes** de hasta 35 días en pleno invierno, justo en la ventana que interesa. El siguiente paso es probar Sentinel-1, que es radar y ve a través de las nubes.
-2. **Parámetros sin calibrar:** las temperaturas base y los requerimientos de grados-día vienen de literatura, no de campo. Sirven para medir el tamaño del problema, no para decidir un corte.
-3. **Parcelas elegidas a mano** por coordenadas, en vez de por recintos de SIGPAC, y recortadas como un cuadrado de 150 m en lugar de por su contorno real.
-4. **Sin verdad de campo:** falta contrastar contra fechas de corte reales de una campaña.
+- El portal del SIAM (`siam.imida.es`) no deja descargar las series de forma automática. Al final encontré los CSV en el catálogo de datos abiertos de la CARM, pero solo llegan hasta 2018. Para lo más reciente habrá que tirar de Open-Meteo.
+- Las tres parcelas las elegí a ojo sobre el mapa, y una de ellas (Los Infiernos) resultó no ser una parcela cultivada: su verdor sale plano todo el año. Por eso quiero pasar a elegirlas con SIGPAC.
+- En la imagen de diciembre se ve que mi cuadrado de 150 m en La Palma cae entre dos parcelas distintas. Hay que recortar por el contorno real de cada una.
+- El hueco de nubes cae justo en invierno, que es cuando más interesa ver el corte.
 
-Mientras esos cuatro puntos sigan abiertos, esto mide el problema; no lo predice.
+## Qué falta para que esto prediga algo
 
-## Fuentes de datos
+1. Tapar los huecos de nubes. Quiero probar Sentinel-1, que es radar y ve a través de ellas.
+2. Calibrar los parámetros: la temperatura base y los grados-día los he sacado de bibliografía, no de datos de campo de esta zona.
+3. Elegir las parcelas con SIGPAC y recortarlas por su contorno.
+4. Contrastar con fechas de corte reales de alguna campaña. Sin eso no puedo saber cuánto me equivoco.
 
-| Fuente | Qué aporta | Acceso |
-|---|---|---|
-| Red SIAM del IMIDA (CARM) | Serie diaria de temperaturas, 2000-2018 | Datos abiertos, CKAN |
-| Sentinel-2 L2A (Copernicus) | Verdor (NDVI) cada ~5 días | Catálogo STAC público, sin credenciales |
-| Open-Meteo (archivo histórico) | Cubre el hueco posterior a 2018 del SIAM | API pública |
+## Datos
 
-Los CSV abiertos del SIAM llegan solo hasta 2018: el portal `siam.imida.es` no expone descarga masiva pública. Para un modelo climatológico, 2000-2018 es suficiente.
+- Temperaturas: red SIAM del IMIDA, desde el catálogo de datos abiertos de la CARM (CKAN), 2000-2018.
+- Verdor: Copernicus Sentinel-2 L2A, una imagen cada 5 días más o menos.
+- Clima posterior a 2018: archivo histórico de Open-Meteo (todavía no lo uso).
 
-## Estructura
+## Archivos
 
 ```
 src/descargar_siam.py   Descarga las estaciones del Campo de Cartagena y sus series diarias
-src/analisis_gdd.py     Integral térmica por semana de trasplante (tabla de arriba)
-src/serie_ndvi.py       Serie NDVI de una parcela desde Sentinel-2, con máscara de nubes
-src/grafico_ndvi.py     Gráfico de las tres parcelas y detección de la caída de corte
-src/ver_ndvi.py         Foto en color y mapa NDVI, antes y después del corte
+src/analisis_gdd.py     Grados-día por semana de trasplante (la tabla de arriba)
+src/serie_ndvi.py       Serie de verdor de una parcela en Sentinel-2, quitando nubes
+src/grafico_ndvi.py     Gráfico de las tres parcelas y detección de la caída del corte
+src/ver_ndvi.py         Foto en color y mapa de verdor, antes y después del corte
 datos/estaciones.csv    Estaciones de la red SIAM
-datos/series_ndvi.csv   Series NDVI ya calculadas (caché)
+datos/series_ndvi.csv   Series de verdor ya calculadas, para no descargarlas otra vez
 ```
 
 ## Cómo ejecutarlo
@@ -76,18 +73,14 @@ datos/series_ndvi.csv   Series NDVI ya calculadas (caché)
 ```bash
 pip install -r requirements.txt
 cd src
-python descargar_siam.py   # descarga las series diarias del SIAM
-python analisis_gdd.py     # tabla de ciclos por semana de trasplante
+python descargar_siam.py   # baja las series diarias del SIAM (no están en el repo)
+python analisis_gdd.py     # tabla de días por semana de trasplante
 python grafico_ndvi.py     # gráfico de verdor y detección del corte
 ```
 
-Las series diarias del SIAM no están en el repositorio: las descarga el primer script.
+## Si trabajas en esto
 
-## Siguiente paso
-
-Pasar de medir el problema a predecirlo: incorporar Sentinel-1 para tapar los huecos de nubes, seleccionar parcelas por SIGPAC y calibrar contra fechas de corte reales de una campaña.
-
-Si planificas recolecciones en el Campo de Cartagena y esto te suena a tu día a día, me interesa mucho tu opinión. Escríbeme por LinkedIn: [linkedin.com/in/samuel-escribano-garcia](https://www.linkedin.com/in/samuel-escribano-garcia/)
+Si planificas recolecciones en el Campo de Cartagena y esto se parece a lo que ves cada campaña, o no se parece en nada, me interesa mucho saberlo. Escríbeme por LinkedIn: [linkedin.com/in/samuel-escribano-garcia](https://www.linkedin.com/in/samuel-escribano-garcia/)
 
 ---
 
