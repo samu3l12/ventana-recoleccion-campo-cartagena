@@ -87,7 +87,7 @@ Las series diarias del SIAM no están en el repositorio: las descarga el primer 
 
 Pasar de medir el problema a predecirlo: incorporar Sentinel-1 para tapar los huecos de nubes, seleccionar parcelas por SIGPAC y calibrar contra fechas de corte reales de una campaña.
 
-Si planificas recolecciones en el Campo de Cartagena y esto te suena a tu día a día, me interesa mucho tu opinión: samuelz09912@gmail.com
+Si planificas recolecciones en el Campo de Cartagena y esto te suena a tu día a día, me interesa mucho tu opinión. Escríbeme por LinkedIn: [linkedin.com/in/samuel-escribano-garcia](https://www.linkedin.com/in/samuel-escribano-garcia/)
 
 ---
 
